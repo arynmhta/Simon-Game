@@ -7,8 +7,8 @@ let started = false;
 let level = 0;
 
 
-$(document).keydown(function() {
-  if (!started) {
+$("body").click(function(event) {
+  if (!started && !$(event.target).hasClass("btn")) {
     $("#level-title").text("Level " + level);
     nextSequence();
     started = true;
@@ -53,7 +53,7 @@ function checkAnswer(currentLevel) {
       $("body").removeClass("game-over");
     }, 200);
 
-    $("#level-title").text("Game Over, Press Any Key to Restart");
+    $("#level-title").text("Game Over, Press Anywhere to Restart");
 
     startOver();
   }
@@ -92,7 +92,7 @@ function animatePress(currentColour) {
   }, 100);
 }
 
-// Restart game
+
 function startOver() {
   level = 0;
   gamePattern = [];
